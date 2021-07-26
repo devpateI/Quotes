@@ -13,11 +13,11 @@ def get_quote():
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
 
-def get_dog_image():
+'''def get_dog_image():
   response = requests.get("https://dog.ceo/api/breeds/image/random")
   json_data = json.loads(response.text)
   url=json_data["message"]
-  return(url)
+  return(url)'''
 
 @client.event
 async def on_ready():
@@ -29,15 +29,15 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith('$inspire'):
+  if message.content.startswith('$inspo'):
     quote = get_quote()
     await message.channel.send(quote) 
 
-  if message.content.startswith('$dog'):
+  '''if message.content.startswith('$dog'):
     dog=get_dog_image()
     embed=discord.Embed(color = discord.Colour.red())
     embed.set_image(url = dog)
-    await message.channel.send(embed=embed)
+    await message.channel.send(embed=embed)'''
 
 
 keep_alive()
